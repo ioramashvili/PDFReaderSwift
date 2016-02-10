@@ -16,7 +16,6 @@ class PDFCollectionViewController: UIViewController, UICollectionViewDelegateFlo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
 
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1

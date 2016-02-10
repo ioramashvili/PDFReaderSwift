@@ -10,6 +10,9 @@
 		43D077781C64C45100A3473C /* PDFCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D077771C64C45100A3473C /* PDFCollectionViewController.swift */; };
 		43D0777A1C64C5A300A3473C /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D077791C64C5A300A3473C /* CustomCollectionViewCell.swift */; };
 		43E9F2131C68B346008590E8 /* PDFReaderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E9F2121C68B346008590E8 /* PDFReaderHelper.swift */; };
+		43E9F2951C6B3DAA008590E8 /* TiledPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E9F2941C6B3DAA008590E8 /* TiledPDFView.m */; };
+		43E9F29F1C6B43E9008590E8 /* PDFLinkAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E9F29E1C6B43E9008590E8 /* PDFLinkAnnotation.m */; };
+		43E9F2A51C6B616F008590E8 /* PDFPageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E9F2A41C6B616F008590E8 /* PDFPageRenderer.m */; };
 		43FE8DB31C6347C200FB2E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE8DB21C6347C200FB2E56 /* AppDelegate.swift */; };
 		43FE8DB51C6347C200FB2E56 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE8DB41C6347C200FB2E56 /* RootViewController.swift */; };
 		43FE8DB71C6347C200FB2E56 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE8DB61C6347C200FB2E56 /* DataViewController.swift */; };
@@ -46,6 +49,13 @@
 		43D077771C64C45100A3473C /* PDFCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFCollectionViewController.swift; sourceTree = "<group>"; };
 		43D077791C64C5A300A3473C /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		43E9F2121C68B346008590E8 /* PDFReaderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFReaderHelper.swift; sourceTree = "<group>"; };
+		43E9F2931C6B3DA9008590E8 /* Test-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test-Bridging-Header.h"; sourceTree = "<group>"; };
+		43E9F2941C6B3DAA008590E8 /* TiledPDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledPDFView.m; sourceTree = "<group>"; };
+		43E9F2961C6B3E88008590E8 /* TiledPDFView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TiledPDFView.h; sourceTree = "<group>"; };
+		43E9F29D1C6B43E9008590E8 /* PDFLinkAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFLinkAnnotation.h; sourceTree = "<group>"; };
+		43E9F29E1C6B43E9008590E8 /* PDFLinkAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFLinkAnnotation.m; sourceTree = "<group>"; };
+		43E9F2A31C6B616F008590E8 /* PDFPageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFPageRenderer.h; sourceTree = "<group>"; };
+		43E9F2A41C6B616F008590E8 /* PDFPageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFPageRenderer.m; sourceTree = "<group>"; };
 		43FE8DAF1C6347C200FB2E56 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43FE8DB21C6347C200FB2E56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43FE8DB41C6347C200FB2E56 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +104,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43E9F2901C6B18E8008590E8 /* ZoomApple */ = {
+			isa = PBXGroup;
+			children = (
+				43E9F2A31C6B616F008590E8 /* PDFPageRenderer.h */,
+				43E9F2A41C6B616F008590E8 /* PDFPageRenderer.m */,
+				43E9F29D1C6B43E9008590E8 /* PDFLinkAnnotation.h */,
+				43E9F29E1C6B43E9008590E8 /* PDFLinkAnnotation.m */,
+				43E9F2941C6B3DAA008590E8 /* TiledPDFView.m */,
+				43E9F2931C6B3DA9008590E8 /* Test-Bridging-Header.h */,
+				43E9F2961C6B3E88008590E8 /* TiledPDFView.h */,
+			);
+			name = ZoomApple;
+			sourceTree = "<group>";
+		};
 		43FE8DA61C6347C200FB2E56 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +144,7 @@
 		43FE8DB11C6347C200FB2E56 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				43E9F2901C6B18E8008590E8 /* ZoomApple */,
 				43FE8DB21C6347C200FB2E56 /* AppDelegate.swift */,
 				43FE8DB41C6347C200FB2E56 /* RootViewController.swift */,
 				43FE8DB61C6347C200FB2E56 /* DataViewController.swift */,
@@ -287,9 +312,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				43FE8DB51C6347C200FB2E56 /* RootViewController.swift in Sources */,
+				43E9F2A51C6B616F008590E8 /* PDFPageRenderer.m in Sources */,
 				43D0777A1C64C5A300A3473C /* CustomCollectionViewCell.swift in Sources */,
 				43FE8DB91C6347C200FB2E56 /* ModelController.swift in Sources */,
 				43FE8DED1C636E9200FB2E56 /* BaseView.swift in Sources */,
+				43E9F2951C6B3DAA008590E8 /* TiledPDFView.m in Sources */,
+				43E9F29F1C6B43E9008590E8 /* PDFLinkAnnotation.m in Sources */,
 				43FE8DB71C6347C200FB2E56 /* DataViewController.swift in Sources */,
 				43E9F2131C68B346008590E8 /* PDFReaderHelper.swift in Sources */,
 				43FE8DB31C6347C200FB2E56 /* AppDelegate.swift in Sources */,
@@ -435,11 +463,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Test/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leavingstone.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Test/Test-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -447,11 +478,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Test/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leavingstone.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Test/Test-Bridging-Header.h";
 			};
 			name = Release;
 		};

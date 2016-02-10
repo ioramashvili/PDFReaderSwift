@@ -31,6 +31,7 @@ class DataViewController: UIViewController, UIScrollViewDelegate {
         setupGestureRecognizer()
     }
     
+    // Use layoutSubviews to center the PDF page in the view.
     override func viewWillLayoutSubviews() {
         setZoomScale()
     }
@@ -46,6 +47,7 @@ class DataViewController: UIViewController, UIScrollViewDelegate {
         let heightScale = scrollViewSize.height / testViewSize.height
         
         scrollView.minimumZoomScale = min(widthScale, heightScale)
+        scrollView.maximumZoomScale = 5.0
         scrollView.zoomScale = min(widthScale, heightScale)
     }
     
@@ -70,7 +72,6 @@ class DataViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func handleDoubleTap(recognizer: UITapGestureRecognizer) {
-        
         if (scrollView.zoomScale > scrollView.minimumZoomScale) {
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
         } else {
