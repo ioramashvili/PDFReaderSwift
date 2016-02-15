@@ -1,14 +1,10 @@
 import UIKit
 
 class BaseView: UIView {
-    var currentPage = 1
+    var currentPage: Int = 1
     var pdfPage: CGPDFPageRef!
     var pageRect: CGRect!
     var pageLinks: NSMutableArray!
-    
-//    CGPDFPageRef pdfPage;
-//    CGRect pageRenderRect;
-//    NSMutableArray *pageLinks;
     
     override func drawRect(rect: CGRect) {
         if currentPage != 0 {
@@ -41,7 +37,7 @@ class BaseView: UIView {
 //            CGContextTranslateCTM(ctx, -mediaRect.origin.x, -mediaRect.origin.y)
 //            // draw it
 //            CGContextDrawPDFPage(ctx, page)
-            
+//            let mediaBoxRect = CGPDFPageGetBoxRect(page, CGPDFBox.MediaBox)
             pageRect = PDFPageRenderer.renderPage(page, inContext: ctx, inRectangle: self.bounds)
             let yellowComponents: [CGFloat] = [1, 1, 0, 1]
             let rgbColorSpace = CGColorSpaceCreateDeviceRGB();
@@ -56,6 +52,8 @@ class BaseView: UIView {
                     let linkAnnotation = pageLinks.objectAtIndex(i)
                     
                     let pt1 = PDFPageRenderer.convertPDFPointToViewPoint(linkAnnotation.pdfRectangle.origin, pdfPage: page, pageRenderRect: pageRect)
+                    
+                    
                     var pt2 = CGPointMake(
                         linkAnnotation.pdfRectangle.origin.x + linkAnnotation.pdfRectangle.size.width,
                         linkAnnotation.pdfRectangle.origin.y + linkAnnotation.pdfRectangle.size.height);
@@ -64,6 +62,11 @@ class BaseView: UIView {
                     
                     let linkRectangle = CGRectMake(pt1.x, pt1.y, pt2.x - pt1.x, pt2.y - pt1.y);
                     CGContextAddRect(ctx, linkRectangle);
+                    
+                    print(linkAnnotation.pdfRectangle)
+                    print(linkRectangle)
+                    print("width \(linkAnnotation.pdfRectangle.size.width)")
+                    print("height \(linkAnnotation.pdfRectangle.size.height)")
                     
                     CGContextStrokePath(ctx);
                 }
@@ -76,14 +79,21 @@ class BaseView: UIView {
     }
     
     func handleUserTap(sender: UIGestureRecognizer) {
+        NSNotificationCenter.defaultCenter().postNotificationName("tapedOnPDFView", object: nil)
         let tapPosition = sender.locationInView(sender.view!.superview)
-        print(tapPosition)
-        
         let pdfPosition = PDFPageRenderer.convertViewPointToPDFPoint(tapPosition, pdfPage: pdfPage, pageRenderRect: pageRect)
+        
+        print("scrollview bounds: \(self.superview!.bounds)")
+        print("pdf MediaBox: \(CGPDFPageGetBoxRect(pdfPage, CGPDFBox.CropBox))")
+        print("self bounds: \(self.bounds): pageRect: \(pageRect)")
+        print("tapposition x-y: \(tapPosition)")
+        print("pdf position x-y: \(pdfPosition)")
+        
         if pageLinks != nil {
             for var i = pageLinks.count - 1; i >= 0; i-- {
                 let link: PDFLinkAnnotation = pageLinks.objectAtIndex(i) as! PDFLinkAnnotation
-                if hitTest(pdfPosition) {
+                
+                if link.hitTest(pdfPosition) {
                     let document = CGPDFPageGetDocument(pdfPage)
                     let linkTarget = link.getLinkTarget(document)
                     
@@ -96,7 +106,11 @@ class BaseView: UIView {
                             let url = NSURL(string: linkUri)
                             print(url!)
                             UIApplication.sharedApplication().openURL(url!)
-//                            [[UIApplication sharedApplication] openURL: url];
+                            
+//                            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                            let navigationController = storyboard.instantiateViewControllerWithIdentifier("ImageSlider") as! UINavigationController
+//                            self.window?.rootViewController = navigationController
+//                            self.window?.rootViewController = navigationController.topViewController
                         }
                     }
                 }
@@ -104,6 +118,10 @@ class BaseView: UIView {
             }
         }
     }
+    
+//    override class func layerClass() -> AnyClass {
+//        return ReaderContentTile.self
+//    }
     
     func hitTest(point: CGPoint) -> Bool {
         if ((pageRect.origin.x <= point.x) &&

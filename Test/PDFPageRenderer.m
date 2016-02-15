@@ -118,13 +118,15 @@
     return renderingRectangle;
 }
 
+
+// converting points page-view
 + (CGPoint)convertViewPointToPDFPoint:(CGPoint)viewPoint pdfPage: (CGPDFPageRef) page pageRenderRect: (CGRect) pageRenderRect {
     CGPoint pdfPoint = CGPointMake(0, 0);
     
     CGRect cropBox = CGPDFPageGetBoxRect(page, kCGPDFCropBox);
     
     int rotation = CGPDFPageGetRotationAngle(page);
-    
+//    int rotation = 90;
     switch (rotation) {
         case 90:
         case -270:
@@ -148,8 +150,8 @@
             break;
     }
     
-    pdfPoint.x = pdfPoint.x + cropBox.origin.x;
-    pdfPoint.y = pdfPoint.y+ cropBox.origin.y;
+    pdfPoint.x = (pdfPoint.x + cropBox.origin.x) * 2;
+    pdfPoint.y = pdfPoint.y + cropBox.origin.y;
     
     return pdfPoint;
 }

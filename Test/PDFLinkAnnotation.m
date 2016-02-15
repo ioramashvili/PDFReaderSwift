@@ -34,6 +34,8 @@
             }
             
             pdfRectangle = CGRectMake(llx, lly, urx - llx, ury - lly);
+            NSLog(@"%f, %f, %f, %f", pdfRectangle.origin.x, pdfRectangle.origin.y, pdfRectangle.size.width,
+                  pdfRectangle.size.width);
         }
     }
     
@@ -46,6 +48,11 @@
 //}
 
 - (BOOL)hitTest:(CGPoint)point {
+    
+    NSLog(@"hitTest: %f, %f, %f, %f", pdfRectangle.origin.x, pdfRectangle.origin.y, pdfRectangle.size.width,
+          pdfRectangle.size.width);
+    NSLog(@"hitPoint: %f, %f", point.x, point.y);
+    
     if ((pdfRectangle.origin.x <= point.x) &&
         (pdfRectangle.origin.y <= point.y) &&
         (point.x <= pdfRectangle.origin.x + pdfRectangle.size.width) &&
