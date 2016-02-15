@@ -1,6 +1,6 @@
 import UIKit
 
-class BaseView: UIView {
+class PDFRenderView: UIView {
     var currentPage: Int = 1
     var pdfPage: CGPDFPageRef!
     var pageRect: CGRect!
@@ -11,33 +11,6 @@ class BaseView: UIView {
             let ctx = UIGraphicsGetCurrentContext()
             let page = PDFReaderHelper.sharedInstance().getPage(atIndex: currentPage)
             pdfPage = page
-//            // PDF might be transparent, assume white paper
-//            UIColor.whiteColor().set()
-//            CGContextFillRect(ctx, rect);
-//            
-//            // Flip coordinates
-//            CGContextGetCTM(ctx);
-//            CGContextScaleCTM(ctx, 1, -1);
-//            CGContextTranslateCTM(ctx, 0, -rect.size.height);
-//
-//            let t = TiledPDFView()
-//            let arr = t.loadPageLinks(page)
-//            
-//            // get the rectangle of the cropped inside
-//            let mediaRect = CGPDFPageGetBoxRect(page, CGPDFBox.CropBox)
-//            let wScale = rect.size.width / mediaRect.size.width
-//            let hScale = rect.size.height / mediaRect.size.height
-//            let minScale = min(wScale, hScale)
-//            
-////            let cropBoxRect = CGPDFPageGetBoxRect(page, CGPDFBox.CropBox)
-////            let mediaBoxRect = CGPDFPageGetBoxRect(page, CGPDFBox.MediaBox)
-////            let effectiveRect = CGRectIntersection(cropBoxRect, mediaBoxRect)
-//
-//            CGContextScaleCTM(ctx, minScale, minScale)
-//            CGContextTranslateCTM(ctx, -mediaRect.origin.x, -mediaRect.origin.y)
-//            // draw it
-//            CGContextDrawPDFPage(ctx, page)
-//            let mediaBoxRect = CGPDFPageGetBoxRect(page, CGPDFBox.MediaBox)
             pageRect = PDFPageRenderer.renderPage(page, inContext: ctx, inRectangle: self.bounds)
             let yellowComponents: [CGFloat] = [1, 1, 0, 1]
             let rgbColorSpace = CGColorSpaceCreateDeviceRGB();
@@ -84,8 +57,6 @@ class BaseView: UIView {
         let tapPosition = sender.locationInView(self)
         let pdfPosition = PDFPageRenderer.convertViewPointToPDFPoint(tapPosition, pdfPage: pdfPage, pageRenderRect: pageRect)
         
-        
-        
         print("scrollview bounds: \(self.superview!.bounds)")
         print("pdf MediaBox: \(CGPDFPageGetBoxRect(pdfPage, CGPDFBox.CropBox))")
         print("self bounds: \(self.bounds): pageRect: \(pageRect)")
@@ -108,28 +79,16 @@ class BaseView: UIView {
                             let linkUri = linkTarget as! String
                             let url = NSURL(string: linkUri)
                             print(url!)
-                            UIApplication.sharedApplication().openURL(url!)
+                            //UIApplication.sharedApplication().openURL(url!)
                             
-//                            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                            let navigationController = storyboard.instantiateViewControllerWithIdentifier("ImageSlider") as! UINavigationController
-//                            self.window?.rootViewController = navigationController
-//                            self.window?.rootViewController = navigationController.topViewController
+                            let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                            let mapViewControllerObejct = storyboard.instantiateViewControllerWithIdentifier("ImageSliderRoot") as! ImageSliderRootViewController
+                            self.window?.rootViewController!.presentViewController(mapViewControllerObejct, animated: true, completion: nil)
                         }
                     }
                 }
                 
             }
-        }
-    }
-    
-    func hitTest(point: CGPoint) -> Bool {
-        if ((pageRect.origin.x <= point.x) &&
-            (pageRect.origin.y <= point.y) &&
-            (point.x <= pageRect.origin.x + pageRect.size.width) &&
-            (point.y <= pageRect.origin.y + pageRect.size.height)) {
-                return true;
-        } else {
-            return false;
         }
     }
 }

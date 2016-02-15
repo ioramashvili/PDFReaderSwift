@@ -30,7 +30,7 @@
 		43FE8DE71C636D3D00FB2E56 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43FE8DE61C636D3D00FB2E56 /* CoreGraphics.framework */; };
 		43FE8DE91C636D4B00FB2E56 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43FE8DE81C636D4B00FB2E56 /* QuartzCore.framework */; };
 		43FE8DEB1C636E1B00FB2E56 /* Document.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 43FE8DEA1C636E1B00FB2E56 /* Document.pdf */; };
-		43FE8DED1C636E9200FB2E56 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE8DEC1C636E9200FB2E56 /* BaseView.swift */; };
+		43FE8DED1C636E9200FB2E56 /* PDFRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FE8DEC1C636E9200FB2E56 /* PDFRenderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +84,7 @@
 		43FE8DE61C636D3D00FB2E56 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		43FE8DE81C636D4B00FB2E56 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		43FE8DEA1C636E1B00FB2E56 /* Document.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Document.pdf; sourceTree = "<group>"; };
-		43FE8DEC1C636E9200FB2E56 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		43FE8DEC1C636E9200FB2E56 /* PDFRenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFRenderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +193,7 @@
 				43FE8DBD1C6347C200FB2E56 /* Assets.xcassets */,
 				43FE8DBF1C6347C200FB2E56 /* LaunchScreen.storyboard */,
 				43FE8DC21C6347C200FB2E56 /* Info.plist */,
-				43FE8DEC1C636E9200FB2E56 /* BaseView.swift */,
+				43FE8DEC1C636E9200FB2E56 /* PDFRenderView.swift */,
 				43E9F2121C68B346008590E8 /* PDFReaderHelper.swift */,
 				43E9F2AB1C6C8547008590E8 /* ImageSliderViewController.swift */,
 			);
@@ -358,7 +358,7 @@
 				43FE8DB91C6347C200FB2E56 /* ModelController.swift in Sources */,
 				43E9F2B71C6C8F51008590E8 /* ImageSliderDataViewController.swift in Sources */,
 				43E9F2B51C6C8F00008590E8 /* ImageSliderModelViewController.swift in Sources */,
-				43FE8DED1C636E9200FB2E56 /* BaseView.swift in Sources */,
+				43FE8DED1C636E9200FB2E56 /* PDFRenderView.swift in Sources */,
 				43E9F2951C6B3DAA008590E8 /* TiledPDFView.m in Sources */,
 				43E9F29F1C6B43E9008590E8 /* PDFLinkAnnotation.m in Sources */,
 				43FE8DB71C6347C200FB2E56 /* DataViewController.swift in Sources */,

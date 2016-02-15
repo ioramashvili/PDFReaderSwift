@@ -1,7 +1,7 @@
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var pdfViewWrapper: BaseView!
+    @IBOutlet weak var pdfViewWrapper: PDFRenderView!
 }
 
 

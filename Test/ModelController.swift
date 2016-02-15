@@ -10,8 +10,7 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
         if !PDFReaderHelper.sharedInstance().isValidPage(atIndex: index) {
             return nil
         }
-
-        // Create a new view controller and pass suitable data.
+        
         let dataViewController = storyboard.instantiateViewControllerWithIdentifier("DataViewController") as! DataViewController
         dataViewController.currentIndex = index
         return dataViewController

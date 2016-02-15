@@ -23,6 +23,7 @@ class ImageSliderDataViewController: UIViewController, UIScrollViewDelegate {
 
         scrollView.addSubview(imageView)
         view.addSubview(scrollView)
+        view.sendSubviewToBack(scrollView)
         
         setZoomScale()
         scrollViewDidZoom(scrollView)

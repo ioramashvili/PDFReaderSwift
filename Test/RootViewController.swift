@@ -9,8 +9,6 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIColl
     var pagerModel = [PagerView]()
 
     var modelController: ModelController {
-        // Return the model controller object, creating it if necessary.
-        // In more complex implementations, the model controller may be passed to the view controller.
         if _modelController == nil {
             _modelController = ModelController()
         }
@@ -83,10 +81,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate, UIColl
         pagerViewWrapper.addGestureRecognizer(swipeDown)
         
         pagerViewWrapper.addSubview(scrollView)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        togglePager(0.3, delay: 0.5)
+        togglePager(0.3, delay: 1)
     }
     
     // this method is called when a tap is recognized

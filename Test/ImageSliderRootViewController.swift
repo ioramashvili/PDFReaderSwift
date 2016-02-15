@@ -4,7 +4,6 @@ class ImageSliderRootViewController: UIViewController, UIPageViewControllerDeleg
     
     var pageViewController: UIPageViewController?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -23,7 +22,8 @@ class ImageSliderRootViewController: UIViewController, UIPageViewControllerDeleg
         self.addChildViewController(self.pageViewController!)
 //        let frame = self.pageViewController!.view.frame
 //        self.pageViewController!.view.frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: self.view.frame.size.width, height: self.view.frame.size.height / 2)
-        self.view.addSubview(self.pageViewController!.view)
+        self.view.addSubview(pageViewController!.view)
+        self.view.sendSubviewToBack(pageViewController!.view)
         
         //todo add back
         
