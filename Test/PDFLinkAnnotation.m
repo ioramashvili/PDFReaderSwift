@@ -42,11 +42,6 @@
     return self;
 }
 
-//- (void)dealloc {
-//    self->annotationDictionary = NULL;
-//    [super dealloc];
-//}
-
 - (BOOL)hitTest:(CGPoint)point {
     
     NSLog(@"hitTest: %f, %f, %f, %f", pdfRectangle.origin.x, pdfRectangle.origin.y, pdfRectangle.size.width,

@@ -63,6 +63,7 @@
 	CGContextClip(context);
 	
 	CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
+    
 	CGContextFillRect(context, clipRect);
 	
 	CGContextTranslateCTM(context, -cropBox.origin.x, -cropBox.origin.y);
@@ -147,10 +148,16 @@
         default:
             pdfPoint.x = cropBox.size.width * (viewPoint.x - pageRenderRect.origin.x) / pageRenderRect.size.width;
             pdfPoint.y = cropBox.size.height * (pageRenderRect.size.height - (viewPoint.y - pageRenderRect.origin.y)) / pageRenderRect.size.height;
+            
+            CGFloat pdfX = ((viewPoint.x - pageRenderRect.origin.x) * cropBox.size.width) / pageRenderRect.size.width + cropBox.origin.x;
+            CGFloat pdfY = ((viewPoint.y - pageRenderRect.origin.y) * cropBox.size.height) / pageRenderRect.size.height - cropBox.size.height - cropBox.origin.y;
+            NSLog(@"%f : %f", pdfX, -pdfY);
+            pdfPoint.x = pdfX;
+            pdfPoint.y = -pdfY;
             break;
     }
     
-    pdfPoint.x = (pdfPoint.x + cropBox.origin.x) * 2;
+    pdfPoint.x = pdfPoint.x + cropBox.origin.x;
     pdfPoint.y = pdfPoint.y + cropBox.origin.y;
     
     return pdfPoint;
@@ -183,11 +190,20 @@
         default:
             viewPoint.x = pageRenderRect.size.width * (pdfPoint.x - cropBox.origin.x) / cropBox.size.width;
             viewPoint.y = pageRenderRect.size.height * (cropBox.size.height - (pdfPoint.y - cropBox.origin.y)) / cropBox.size.height;
+            
+//            CGFloat pdfX = (viewPoint.x * cropBox.size.width) / pageRenderRect.size.width + cropBox.origin.x;
+//            CGFloat pdfY = (viewPoint.y * cropBox.size.height) / pageRenderRect.size.height - cropBox.size.height - cropBox.origin.y;
+            
             break;
     }
     
     viewPoint.x = viewPoint.x + pageRenderRect.origin.x;
     viewPoint.y = viewPoint.y + pageRenderRect.origin.y;
+    
+    
+    CGFloat pdfX = ((viewPoint.x - pageRenderRect.origin.x) * cropBox.size.width) / pageRenderRect.size.width + cropBox.origin.x;
+    CGFloat pdfY = ((viewPoint.y - pageRenderRect.origin.y) * cropBox.size.height) / pageRenderRect.size.height - cropBox.size.height - cropBox.origin.y;
+    NSLog(@"from viewPoint: %f : %f", pdfX, -pdfY);
     
     return viewPoint;
 }

@@ -80,8 +80,11 @@ class BaseView: UIView {
     
     func handleUserTap(sender: UIGestureRecognizer) {
         NSNotificationCenter.defaultCenter().postNotificationName("tapedOnPDFView", object: nil)
-        let tapPosition = sender.locationInView(sender.view!.superview)
+//        let tapPosition = sender.locationInView(sender.view!.superview)
+        let tapPosition = sender.locationInView(self)
         let pdfPosition = PDFPageRenderer.convertViewPointToPDFPoint(tapPosition, pdfPage: pdfPage, pageRenderRect: pageRect)
+        
+        
         
         print("scrollview bounds: \(self.superview!.bounds)")
         print("pdf MediaBox: \(CGPDFPageGetBoxRect(pdfPage, CGPDFBox.CropBox))")
@@ -118,10 +121,6 @@ class BaseView: UIView {
             }
         }
     }
-    
-//    override class func layerClass() -> AnyClass {
-//        return ReaderContentTile.self
-//    }
     
     func hitTest(point: CGPoint) -> Bool {
         if ((pageRect.origin.x <= point.x) &&
